@@ -1,9 +1,31 @@
 public class Fraction
 {
 
-    int _top = 1;
-    int _bottom = 1;
+    int _top;
+    int _bottom;
 
-    
+    public Fraction()
+    {
+
+        _top = 1;
+        _bottom = 1;
+
+    }
+
+    public Fraction(int numerator)
+    {
+
+        _top = numerator;
+        _bottom = 1;
+
+    }
+
+    public Fraction(int numerator, int denominator)
+    {
+
+        _top = numerator;
+        _bottom = denominator;
+
+    }
 
 }
