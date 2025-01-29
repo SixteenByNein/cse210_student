@@ -28,4 +28,51 @@ public class Fraction
 
     }
 
+
+
+    public int GetTop()
+    {
+
+        return _top;
+
+    }
+
+    public int GetBottom()
+    {
+
+        return _bottom;
+
+    }
+
+    public string GetFractionString()
+    {
+
+        return $"{_top}/{_bottom}";
+
+    }
+
+    public double GetDecimalValue()
+    {
+
+        return (double)_top / (double)_bottom;
+
+    }
+
+    public void SetTop(int top)
+    {
+
+        _top = top;
+
+    }
+
+    public void SetBottom(int bottom)
+    {
+
+        _bottom = bottom;
+
+    }
+
+
+
+
 }
