@@ -41,7 +41,7 @@ class Order()
         {
 
         Console.WriteLine($"{item.GetName()} ID: ({item.GetId()}) x {item.GetQuantity()}");
-        Console.WriteLine($"    {item.GetPrice()} each x {item.GetQuantity()} = {Math.Round(item.GetPrice() * item.GetQuantity(), 2)}");
+        Console.WriteLine($"    ${item.GetPrice()} each x {item.GetQuantity()} = ${Math.Round(item.GetPrice() * item.GetQuantity(), 2)}");
 
         }
 
