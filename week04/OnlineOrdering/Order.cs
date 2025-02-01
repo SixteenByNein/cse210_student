@@ -18,16 +18,16 @@ class Order()
 
         double shipping = (Convert.ToDouble(_customer.Local()) * 30) + 5;
 
-        double total = 0;
+        double preshipping = 0;
 
         foreach(Product item in _products)
         {
 
-            total += item.Total();
+            preshipping += item.Total();
 
         }
 
-        total += shipping;
+        double total = preshipping + shipping;
 
         return total;
 
@@ -43,10 +43,15 @@ class Order()
         Console.WriteLine($"{item.GetName()} ID: ({item.GetId()}) x {item.GetQuantity()}");
         Console.WriteLine($"    ${item.GetPrice()} each x {item.GetQuantity()} = ${Math.Round(item.GetPrice() * item.GetQuantity(), 2)}");
 
+        Console.WriteLine($"Shipping: ${(Convert.ToDouble(_customer.Local()) * 30) + 5}");
+        Console.WriteLine($"TOTAL: ${Cost()}");
+
         }
 
 
     }
+
+
 
     public void ShippingLabel()
     {
