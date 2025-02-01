@@ -16,7 +16,7 @@ class Order()
     public double Cost()
     {
 
-        double shipping = (Convert.ToDouble(_customer.Local()) * 30) + 5;
+        double shipping = (Convert.ToDouble(!_customer.Local()) * 30) + 5;
 
         double preshipping = 0;
 
@@ -43,7 +43,7 @@ class Order()
         Console.WriteLine($"{item.GetName()} ID: ({item.GetId()}) x {item.GetQuantity()}");
         Console.WriteLine($"    ${item.GetPrice()} each x {item.GetQuantity()} = ${Math.Round(item.GetPrice() * item.GetQuantity(), 2)}");
 
-        Console.WriteLine($"Shipping: ${(Convert.ToDouble(_customer.Local()) * 30) + 5}");
+        Console.WriteLine($"Shipping: ${(Convert.ToDouble(!_customer.Local()) * 30) + 5}");
         Console.WriteLine($"TOTAL: ${Cost()}");
 
         }

@@ -61,6 +61,35 @@ class Program
 
         cart01.ShippingLabel();
 
+Address lukeAddress = new Address();
+
+        lukeAddress.SetAddress("1402 North Tuscan Road", "Moisture Farms", "Junland Wastes", "Tatooine");
+
+        Customer luke = new Customer();
+
+        luke.SetCustomer("Luke Skywalker", lukeAddress);
+
+        Product powerConverter = new Product();
+
+        powerConverter.SetProduct("Power Converter", 14541, 45.99, 3);
+
+        Product astromech = new Product();
+
+        astromech.SetProduct("Astromech Droid", 22, 411.99, 1);
+
+        Product protocol = new Product();
+
+        protocol.SetProduct("Protocol Droid", 30, 842.99, 1);
+
+
+        Order cart02 = new Order();
+
+        cart02.SetOrder([powerConverter, astromech, protocol], luke);
+
+        cart02.PackingLabel();
+
+        cart02.ShippingLabel();
+
 
 
     }
