@@ -5,6 +5,24 @@ class Word()
     bool _isHidden;
 
 
+
+
+    public void SetText(String input)
+    {
+
+        _text = input;
+
+    }
+
+    public void SetHidden(bool input)
+    {
+
+        _isHidden = input;
+
+    }
+
+
+
     public void Hide()
     {
 
@@ -19,17 +37,34 @@ class Word()
 
     }
 
-    public bool IsHidden()
+    public bool GetHidden()
     {
 
-        return false;
+        return _isHidden;
+
+    }
+
+    public String Underscore()
+    {
+
+        String result = "";
+
+        foreach (char i in _text)
+        {
+
+            result = $"{result}{i}";
+
+        }
+
+        return result;
+
 
     }
 
     public string GetDisplay()
     {
 
-        return "eee";
+        return _text;
 
     }
 
