@@ -1,7 +1,25 @@
-class Comment()
+class Comment(string name, string text)
 {
 
-    public string _name;
-    public string _text;
+    string _name = name;
+    string _text = text;
+
+    
+    public string GetName()
+    {
+
+        return _name;
+
+    }
+
+    public string GetText()
+    {
+
+        return _text;
+
+    }
+
+
+
 
 }

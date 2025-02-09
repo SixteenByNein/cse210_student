@@ -1,10 +1,10 @@
-class Video()
+class Video(string title, string author, int length, List<Comment> comments)
 {
 
-    List<Comment> _comments;
-    string _title;
-    string _author;
-    int _length;
+    List<Comment> _comments = comments;
+    string _title = title;
+    string _author = author;
+    int _length = length;
 
     public int GetCommentQuantity()
     {
@@ -14,7 +14,33 @@ class Video()
     }
 
 
+    public string GetTitle()
+    {
 
+        return _title;
+
+    }
+
+    public string GetAuthor()
+    {
+
+        return _author;
+
+    }
+
+    public int GetLength()
+    {
+
+        return _length;
+
+    }
+
+    public List<Comment> GetComments()
+    {
+
+        return _comments;
+
+    }
 
 
 
