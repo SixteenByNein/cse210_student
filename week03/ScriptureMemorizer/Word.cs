@@ -44,15 +44,42 @@ class Word()
 
     }
 
-    public String Underscore()
+    public String Underscore(bool mode)
     {
 
         String result = "";
 
+        int reps = 0;
+
         foreach (char i in _text)
         {
 
-            result = $"{result}{i}";
+            
+
+            //replaces only letters, leaving punctuation.
+
+            if (char.IsLetter(i))
+            {
+
+                if (mode && reps == 0)
+            {
+
+                result = $"{result}{i}";
+
+            } else{
+
+                result = $"{result}{"_"}";
+
+                }
+            }
+            else
+            {
+
+                result = $"{result}{i}";
+
+            }
+
+            reps = reps + 1;
 
         }
 

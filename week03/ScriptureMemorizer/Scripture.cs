@@ -7,20 +7,73 @@ class Scripture()
 
     List<Word> _words;
 
+    int remaining;
 
 
-    public void HideRandomWords(int numberToHide)
+
+    public bool HideRandomWords(int numberToHide)
     {
+
+        Random rnd = new Random();
 
         Console.Clear();
 
+        if(remaining > numberToHide)
+        {
+        remaining = remaining - numberToHide;
+        } else
+        {
 
+            remaining = 0;
+
+        }
+
+        Console.WriteLine($"{remaining} words remaining");
+
+
+        if(remaining > 0)
+        {
+
+        for(int i = 0; i < numberToHide; i++)
+        {
+
+        int target = rnd.Next(1, _words.Count());
+
+        //prevents the program from trying to hide the same word twice
+
+        while(_words[target].GetHidden())
+        {
+
+            target = rnd.Next(1, _words.Count());
+
+        }
+
+
+        _words[target].SetHidden(true);
+
+        }
+
+        return false;
+
+        } else
+        {
+
+            foreach(Word item in _words)
+            {
+
+                item.SetHidden(true);
+
+            }
+
+            return true;
+
+        }
 
 
     }
 
 
-    String Text(List<Word> words)
+    String Text(List<Word> words, bool mode)
     {
 
         String result = "";
@@ -31,7 +84,7 @@ class Scripture()
             if (item.GetHidden())
             {
 
-                result = $"{result} {item.Underscore()}";
+                result = $"{result} {item.Underscore(mode)}";
 
             } else
             {
@@ -50,19 +103,15 @@ class Scripture()
 
 
 
-    public string GetDisplayText()
+    public string GetDisplayText(bool mode)
     {
 
-        return $"{_reference.GetDisplayText()} {Text(_words)}";
+        return $"{_reference.GetDisplayText()} {Text(_words, mode)}";
+
+        
 
     }
 
-    public bool IsCompletelyHidden()
-    {
-
-        return false;
-
-    }
 
 
     public void SetRef(Reference r)
@@ -73,7 +122,8 @@ class Scripture()
     }
 
 
-        public void SetWords(string Text)
+    //Instead of manually creating each instance of Word, I wrote this method to convert each word in a string to an unhidden Word instance.
+    public void SetWords(string Text)
     {
 
         List<Word> parsed = [];
@@ -86,7 +136,7 @@ class Scripture()
             Word entry = new Word();
 
             entry.SetText(item);
-            entry.SetHidden(true);
+            entry.SetHidden(false);
 
             parsed.Add(entry);
 
@@ -94,6 +144,7 @@ class Scripture()
 
 
         _words = parsed;
+        remaining = _words.Count();
 
 
     }
