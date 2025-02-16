@@ -13,4 +13,20 @@ public class EternalGoal:Goal
         
     }
 
+
+    public override int GetNumerator()
+    {
+        return 0;
+    }
+
+    public override int GetDenominator()
+    {
+        return 0;
+    }
+
+    public override int GoalType()
+    {
+        return 1;
+    }
+
 }

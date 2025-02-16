@@ -1,6 +1,7 @@
 
 public class ChecklistGoal:Goal
 {
+
     
     int _numerator = 0;
     int _denominator = 1;
@@ -47,6 +48,22 @@ public class ChecklistGoal:Goal
 
 
         }
+    }
+
+
+    public override int GetNumerator()
+    {
+        return _numerator;
+    }
+
+    public override int GetDenominator()
+    {
+        return _denominator;
+    }
+
+    public override int GoalType()
+    {
+        return 2;
     }
 
 }

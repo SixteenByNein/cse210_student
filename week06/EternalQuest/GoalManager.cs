@@ -6,6 +6,8 @@ class GoalManager()
 
 
 
+    string fileName;
+
 
     //Creativity: Dynamic text rendering effects.
     TextEffects fx = new TextEffects();
@@ -370,6 +372,23 @@ class GoalManager()
     public void SaveGoals()
     {
 
+        fx.Marquee("Enter file name:");
+        Console.WriteLine();
+        Console.Write("--> ");
+        fileName = Console.ReadLine();
+
+        using (StreamWriter outputFile = new StreamWriter(fileName))
+        {
+            foreach(Goal item in _goals)
+            {
+
+            outputFile.Write($"{item.GoalType()}-{item.GetName()}-{item.GetDescription()}-{item.GetPoints()}-{item.IsCompleteBool()}-{item.GetNumerator()}-{item.GetDenominator()}/");
+
+            }
+
+        }
+
+        Start();
 
 
     }
@@ -377,8 +396,73 @@ class GoalManager()
     public void LoadGoals()
     {
 
+        fx.Marquee("Enter file name:");
+        Console.WriteLine();
+        Console.Write("--> ");
+        fileName = Console.ReadLine();
 
+        string file = System.IO.File.ReadAllText(fileName);
+
+        string[] lines = file.Split("/");
+        
+
+        _goals.Clear();
+
+        foreach(string item in lines)
+        {
+
+            string[] data = item.Split("-");
+
+            if(data[0] == "0")
+            {
+
+                SimpleGoal entry = new();
+
+                entry.SetName(data[1]);
+                entry.SetDescription(data[2]);
+                entry.SetPoints(int.Parse(data[3]));
+                entry.MarkComplete(bool.Parse(data[4]));
+
+                _goals.Add(entry);
+
+            }
+
+            if(data[0] == "1")
+            {
+
+                EternalGoal entry = new();
+
+                entry.SetName(data[1]);
+                entry.SetDescription(data[2]);
+                entry.SetPoints(int.Parse(data[3]));
+                entry.MarkComplete(bool.Parse(data[4]));
+
+                _goals.Add(entry);
+
+            }
+
+            if(data[0] == "2")
+            {
+
+                ChecklistGoal entry = new();
+
+                entry.SetName(data[1]);
+                entry.SetDescription(data[2]);
+                entry.SetPoints(int.Parse(data[3]));
+                entry.MarkComplete(bool.Parse(data[4]));
+                entry.SetNumerator(int.Parse(data[5]));
+                entry.SetDenominator(int.Parse(data[6]));
+
+                _goals.Add(entry);
+
+            }
+
+
+        }
+
+        Start();
 
     }
+    
 
 }

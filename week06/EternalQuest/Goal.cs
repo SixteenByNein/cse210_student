@@ -5,6 +5,7 @@ public string _shortName = "";
 string _description = "";
 public int _points = 0;
 
+
 public bool _complete = false;
 
 
@@ -12,6 +13,13 @@ public string GetName()
 {
 
     return _shortName;
+
+}
+
+public int GetPoints()
+{
+
+    return _points;
 
 }
 
@@ -23,6 +31,9 @@ public string GetDescription()
     return _description;
 
 }
+
+public abstract int GetNumerator();
+public abstract int GetDenominator();
 
 
 public void SetName(string name)
@@ -74,6 +85,10 @@ public bool IsCompleteBool()
     return _complete;
 
 }
+
+
+
+public abstract int GoalType();
 
 
 
