@@ -1,9 +1,16 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.VisualBasic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Mindfulness Project.");
+        
+        
+        Menu main = new();
+        main.LoadMenu([new BreathingActivity(), new ReflectingActivity(), new ListingActivity(), new Quit()]);
+        main.ShowMenu(true);
+    
     }
 }
